@@ -1,100 +1,37 @@
 import 'package:flutter/material.dart';
+import 'globals.dart' as globals;
+
+
+import './login/login_screen.dart';
+import './login/logo_screen.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   final _routes = <String, WidgetBuilder>{
-    "/anotherPage": (BuildContext context) => new AnotherPage(),
+    "/loginScreen": (BuildContext context) => LoginScreen(),
   };
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    final outLineInputBorder = OutlineInputBorder(
+      borderSide: BorderSide(color: Color(globals.color_common_purple), width: 2),
+      borderRadius: BorderRadius.circular(2),
+    );
+    return MaterialApp(
       title: 'Firma',
-      home: new MyHomePage(),
+      debugShowCheckedModeBanner: false,
+      home: LogoScreen(),
+      theme: ThemeData(
+        inputDecorationTheme: InputDecorationTheme(
+          border: outLineInputBorder,
+          enabledBorder: outLineInputBorder,
+          focusedBorder: outLineInputBorder,
+          labelStyle: TextStyle(color: Color(globals.color_common_purple), fontSize: 14),
+          prefixStyle: TextStyle(color: Color(globals.color_common_purple)),
+        ),
+      ),
       routes: _routes,
-    );
-  }
-}
-
-/// place: "/"
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => new _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    // llama Image
-    var decoratedBox = new DecoratedBox(
-      decoration: new BoxDecoration(
-        image: new DecorationImage(
-          image: new AssetImage('assets/images/firma_logo.jpg'),
-        ),
-      ),
-    );
-
-    // hero top left
-    var hero = new Hero(
-      tag: 'hero-tag-llama',
-      child: decoratedBox,
-    );
-
-    return new Scaffold(
-      body: new Center(
-        child: Container(
-          height: 100,
-          width: 100,
-          child: hero,
-        ),
-      ),
-      floatingActionButton: new FloatingActionButton(
-        onPressed: _onPressed,
-        tooltip: 'Increment',
-        child: new Icon(Icons.done),
-      ),
-    );
-  }
-
-  void _onPressed() {
-    Navigator.of(context).pushNamed("/anotherPage");
-  }
-}
-
-// place: "/anotherPage"
-class AnotherPage extends StatefulWidget {
-  @override
-  _AnotherPageState createState() => new _AnotherPageState();
-}
-
-class _AnotherPageState extends State<AnotherPage> {
-  @override
-  Widget build(BuildContext context) {
-    // llama Image
-    var decoratedBox = new DecoratedBox(
-      decoration: new BoxDecoration(
-          image: new DecorationImage(
-        image: new AssetImage('assets/images/firma_logo.jpg'),
-      )),
-    );
-
-    // hero center
-    var hero = new Hero(
-      tag: 'hero-tag-llama',
-      child: decoratedBox,
-    );
-
-    var center = new Center(
-      child: new Container(
-        height: 200.0,
-        width: 200.0,
-        child: hero,
-      ),
-    );
-
-    return new Scaffold(
-      body: center,
     );
   }
 }
