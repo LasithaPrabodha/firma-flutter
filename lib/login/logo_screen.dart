@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 /// place: "/"
 class LogoScreen extends StatefulWidget {
@@ -10,14 +10,29 @@ class _LogoScreenState extends State<LogoScreen> {
   @override
   Widget build(BuildContext context) {
     void _onPressed() {
-      Navigator.of(context).pushNamed("/loginScreen");
+      // Navigator.push(
+      //   context,
+      //   PageRouteBuilder(
+      //     pageBuilder: (context, animation1, animation2) {
+      //       return LoginScreen();
+      //     },
+      //     transitionsBuilder: (context, animation1, animation2, child) {
+      //       return FadeTransition(
+      //         child: child,
+      //         opacity: animation1, 
+      //       );
+      //     },
+      //     transitionDuration: Duration(milliseconds: 500),
+      //   ),
+      // );
+      Navigator.pushNamed(context, "/loginScreen");
     }
 
     // llama Image
     var decoratedBox = DecoratedBox(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/firma_logo.jpg'),
+          image: AssetImage('assets/images/firma_logo.png'),
         ),
       ),
     );
@@ -31,8 +46,8 @@ class _LogoScreenState extends State<LogoScreen> {
       ),
     );
 
-    return Scaffold(
-      body: Center(
+    return CupertinoPageScaffold(
+      child: Center(
         child: FractionallySizedBox(
           widthFactor: 0.4,
           heightFactor: 0.4,

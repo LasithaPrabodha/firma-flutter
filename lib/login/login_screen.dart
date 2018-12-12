@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './login_form.dart';
 import '../globals.dart' as globals;
@@ -15,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
     var decoratedBox = DecoratedBox(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/firma_logo.jpg'),
+          image: AssetImage('assets/images/firma_logo.png'),
         ),
       ),
     );
@@ -33,9 +34,10 @@ class _LoginScreenState extends State<LoginScreen> {
     var column = Column(
       children: <Widget>[
         Expanded(
-          flex: 12,
+          flex: 4,
           child: Container(
-            alignment: Alignment(0, 0.6),
+            // color: Colors.blueAccent,
+            alignment: Alignment(0, 0.7),
             child: Container(
               height: 150,
               width: 150,
@@ -44,36 +46,32 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
         Expanded(
-          flex: 8,
+          flex: 3,
           child: Container(
+            // color: Colors.cyanAccent,
             padding: const EdgeInsets.symmetric(horizontal: 60),
             child: LoginForm(),
           ),
         ),
         Expanded(
-          flex: 2,
+          flex: 1,
           child: Container(
+            // color: Colors.amberAccent,
             padding: new EdgeInsets.all(14),
-            height: 48.0,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  "Don't have an account",
-                  style: TextStyle(color: Color(globals.color_text_grey)),
+                Text( 
+                  "Don't have an account? ",
+                  style: TextStyle(color: Color(globals.color_text_grey), fontSize: 14),
                 ),
-                ButtonTheme(
-                  minWidth: double.minPositive,
-                  child: OutlineButton(
-                    child: Text(
-                      "Sign up",
-                      style:
-                          TextStyle(color: Color(globals.color_common_purple)),
-                    ),
-                    borderSide: BorderSide(style: BorderStyle.none),
-                    padding: EdgeInsets.all(0),
-                    onPressed: () => {},
+                CupertinoButton(
+                  child: Text(
+                    "Sign up",
+                    style: TextStyle(color: Color(globals.color_common_purple), fontSize: 14),
                   ),
+                  padding: EdgeInsets.zero,
+                  onPressed: () {},
                 )
               ],
             ),
@@ -96,6 +94,8 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     });
 
-    return Scaffold(body: layout);
+    return Scaffold(
+      body: layout,
+    );
   }
 }
