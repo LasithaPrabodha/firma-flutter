@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './login_form.dart';
-import '../globals.dart' as globals;
+import '../../globals.dart' as globals;
 
 // place: "/loginScreen"
 class LoginScreen extends StatefulWidget {
@@ -61,18 +61,24 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text( 
+                Text(
                   "Don't have an account? ",
-                  style: TextStyle(color: Color(globals.color_text_grey), fontSize: 14),
+                  style: TextStyle(
+                      color: Color(globals.color_text_grey), fontSize: 14),
                 ),
-                CupertinoButton(
-                  child: Text(
-                    "Sign up",
-                    style: TextStyle(color: Color(globals.color_common_purple), fontSize: 14),
+                ButtonTheme(
+                  minWidth: double.minPositive,
+                  child: FlatButton(
+                    child: Text(
+                      "Sign up",
+                      style: TextStyle(
+                          color: Color(globals.color_common_purple),
+                          fontSize: 14),
+                    ),
+                    padding: EdgeInsets.zero,
+                    onPressed: () {},
                   ),
-                  padding: EdgeInsets.zero,
-                  onPressed: () {},
-                )
+                ),
               ],
             ),
           ),

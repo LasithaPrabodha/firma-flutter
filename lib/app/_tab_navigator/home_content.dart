@@ -1,11 +1,10 @@
-import 'package:firma_prototype/home/content_card.dart';
-// import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:outline_material_icons/outline_material_icons.dart';
+// import 'package:flutter/material.dart';
 
 class HomeContent extends StatelessWidget {
-  final double height;
-
-  const HomeContent({Key key, this.height}) : super(key: key);
+  final Widget child; 
+  const HomeContent({Key key, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +12,7 @@ class HomeContent extends StatelessWidget {
       children: <Widget>[
         Container(
           color: Color(0xFF6F3E5D),
-          height: height,
+          height: 188,
           width: double.infinity,
           child: _bigOval(width: MediaQuery.of(context).size.width + 50),
         ),
@@ -24,7 +23,9 @@ class HomeContent extends StatelessWidget {
             children: <Widget>[
               _textRow(),
               Expanded(
-                child: ContentCard(),
+                child: SingleChildScrollView(
+                  child: child,
+                ),
               ),
             ],
           ),
@@ -35,7 +36,7 @@ class HomeContent extends StatelessWidget {
 
   Widget _textRow() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 21),
+      padding: const EdgeInsets.only(left: 21, right: 21, bottom: 18),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,17 +47,23 @@ class HomeContent extends StatelessWidget {
               Text(
                 'Hello',
                 style: TextStyle(
-                    color: Colors.white, fontSize: 24, fontFamily: 'CabinBold'),
+                    color: CupertinoColors.white,
+                    fontSize: 24,
+                    fontFamily: 'CabinBold'),
               ),
               Text(
                 'Silvia Erin',
                 style: TextStyle(
-                    color: Colors.white, fontSize: 32, fontFamily: 'CabinBold'),
+                    color: CupertinoColors.white,
+                    fontSize: 32,
+                    fontFamily: 'CabinBold'),
               ),
               Text(
                 'Wednesday, 14th of Dec',
                 style: TextStyle(
-                    color: Colors.white, fontSize: 12, fontFamily: 'CabinBold'),
+                    color: CupertinoColors.white,
+                    fontSize: 12,
+                    fontFamily: 'CabinBold'),
               )
             ],
           ),
@@ -64,8 +71,8 @@ class HomeContent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Icon(
-                Icons.menu,
-                color: Colors.white,
+                OMIcons.menu,
+                color: CupertinoColors.white,
               )
             ],
           )
@@ -76,8 +83,8 @@ class HomeContent extends StatelessWidget {
 
   Widget _bigOval({double width}) {
     return RotationTransition(
-      turns: new AlwaysStoppedAnimation(152 / 360),
-      alignment: Alignment(0.05, -0.14),
+      turns: AlwaysStoppedAnimation(152 / 360),
+      alignment: Alignment(0.05, -0.2),
       child: Container(
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,

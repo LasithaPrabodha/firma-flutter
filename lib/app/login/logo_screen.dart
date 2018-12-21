@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'login_screen.dart';
 
 /// place: "/"
 class LogoScreen extends StatefulWidget {
@@ -10,22 +11,31 @@ class _LogoScreenState extends State<LogoScreen> {
   @override
   Widget build(BuildContext context) {
     void _onPressed() {
-      // Navigator.push(
-      //   context,
-      //   PageRouteBuilder(
-      //     pageBuilder: (context, animation1, animation2) {
-      //       return LoginScreen();
-      //     },
-      //     transitionsBuilder: (context, animation1, animation2, child) {
-      //       return FadeTransition(
-      //         child: child,
-      //         opacity: animation1, 
-      //       );
-      //     },
-      //     transitionDuration: Duration(milliseconds: 500),
-      //   ),
-      // );
-      Navigator.pushNamed(context, "/loginScreen");
+      Navigator.push(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (context, animation1, animation2) {
+            return LoginScreen();
+          },
+          transitionsBuilder: (BuildContext context,
+              Animation<double> animation,
+              Animation<double> secondaryAnimation,
+              Widget child) {
+            return SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(0, 0.2),
+                end: Offset.zero,
+              ).animate(animation),
+              child: FadeTransition(
+                opacity: animation,
+                child: child,
+              ),
+            );
+          },
+          transitionDuration: Duration(milliseconds: 500),
+        ),
+      );
+      // Navigator.pushNamed(context, "/loginScreen");
     }
 
     // llama Image

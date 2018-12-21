@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
-import '../globals.dart' as globals;
+import '../../globals.dart' as globals;
 
 class LoginForm extends StatefulWidget {
   @override
@@ -11,7 +11,9 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     void _onSubmit() {
-      Navigator.pushReplacementNamed(context, '/toDoList');
+      // Navigator.of(context).push(CupertinoPageRoute<void>(
+      //     builder: (BuildContext context) => Home()));
+      Navigator.pushReplacementNamed(context, '/home');
     }
 
     return Container(
