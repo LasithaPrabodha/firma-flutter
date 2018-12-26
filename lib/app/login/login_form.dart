@@ -84,13 +84,16 @@ class _LoginFormState extends State<LoginForm> {
                   Text(
                     'Forgot ',
                     style: TextStyle(
-                        color: Color(globals.color_text_grey), fontSize: 14),
+                      color: Color(globals.color_text_grey),
+                      fontSize: 14,
+                    ),
                   ),
                   Text(
                     'Password',
                     style: TextStyle(
-                        color: Color(globals.color_common_purple),
-                        fontSize: 14),
+                      color: Color(globals.color_common_purple),
+                      fontSize: 14,
+                    ),
                   ),
                 ],
               ),

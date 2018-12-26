@@ -84,7 +84,7 @@ class HorizontalTimeline extends StatelessWidget {
       _generateDate(3),
     ];
 
-    return dates.map((item) {
+    return dates.map<Widget>((item) {
       return item.isToday
           ? Container(
               padding: EdgeInsets.only(

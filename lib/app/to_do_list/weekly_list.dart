@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'daily_schedule/daily_schedule.dart';
 import 'daily_schedule/column_data.dart';

@@ -1,21 +1,27 @@
+import 'package:firma_prototype/app/_tab_navigator/home_content.dart';
 import 'package:firma_prototype/app/to_do_list/daily_schedule/tick_icon.dart';
+import 'package:firma_prototype/app/visits/single_visit_patients.dart';
 import 'package:firma_prototype/app/visits/visits_tab.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import '../../globals.dart' as globals;
 
 class SingleVisit extends StatelessWidget {
   final VisitData data;
-  final ValueChanged<int> onChanged;
 
-  const SingleVisit({Key key, this.data, @required this.onChanged})
-      : super(key: key);
-
-  void _handleTap() {
-    onChanged(data.visit);
-  }
+  const SingleVisit({Key key, this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    void _handleTap() {
+      Navigator.push(
+        context,
+        CupertinoPageRoute(builder: (BuildContext context) {
+          return HomeContent(child: SingleVisitPatients(visitID: data.visit));
+        }),
+      );
+    }
+
     return Container(
       margin: EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
@@ -43,7 +49,6 @@ class SingleVisit extends StatelessWidget {
               style: TextStyle(
                 color: Color(globals.color_common_purple),
                 fontWeight: FontWeight.bold,
-                fontFamily: "CabinBold",
                 fontSize: 16,
               ),
             ),
@@ -80,10 +85,10 @@ class SingleVisit extends StatelessWidget {
                     "/" +
                     data.patients.toString(),
                 style: TextStyle(
-                    color: Color.fromRGBO(111, 62, 93, 0.62),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    fontFamily: "CabinBold"),
+                  color: Color.fromRGBO(111, 62, 93, 0.62),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
               )
             : TickIcon(),
       ),

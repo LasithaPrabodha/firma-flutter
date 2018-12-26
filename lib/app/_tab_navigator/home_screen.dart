@@ -6,75 +6,102 @@ import 'package:outline_material_icons/outline_material_icons.dart';
 import 'home_content.dart';
 import '../to_do_list/to_do_list_tab.dart';
 
-class Home extends StatelessWidget {
-  final navigation = CupertinoTabBar(
-    backgroundColor: Color.fromRGBO(249, 249, 249, 0.9),
-    border: Border(
-        top: BorderSide(width: 0.5, color: Color.fromRGBO(0, 0, 0, 0.3))),
-    inactiveColor: Color(0xFFBDBDBD),
-    activeColor: Color(0xFF6F3E5D),
-    iconSize: 26,
-    currentIndex: 0,
-    items: [
-      BottomNavigationBarItem(
-        icon: Padding(
-          padding: EdgeInsets.only(top: 6),
-          child: Icon(OMIcons.eventNote),
-        ),
-        title: Text('To Do List'),
-      ),
-      BottomNavigationBarItem(
-        icon: Padding(
-          padding: EdgeInsets.only(top: 6),
-          child: Icon(OMIcons.filterNone),
-        ),
-        title: Text('Visits'),
-      ),
-      BottomNavigationBarItem(
-        icon: Padding(
-          padding: EdgeInsets.only(top: 6),
-          child: Icon(OMIcons.peopleOutline),
-        ),
-        title: Text('Patients'),
-      )
-    ],
-  );
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int _currentIndex = 0;
+  final GlobalKey<NavigatorState> toDoNaviKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> visitsNaviKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> patientsNaviKey = GlobalKey<NavigatorState>();
+
+  Widget tabBuilder(BuildContext context, int i) {
+    switch (i) {
+      case 0:
+        return CupertinoTabView(
+            navigatorKey: toDoNaviKey,
+            builder: (BuildContext context) {
+              return HomeContent(
+                child: ToDoList(),
+              );
+            });
+      case 1:
+        return CupertinoTabView(
+            navigatorKey: visitsNaviKey,
+            builder: (BuildContext context) {
+              return HomeContent(
+                child: VisitsTab(),
+              );
+            });
+      case 2:
+        return CupertinoTabView(
+            navigatorKey: patientsNaviKey,
+            builder: (BuildContext context) {
+              return HomeContent(
+                child: PatientsTab(),
+              );
+            });
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return CupertinoTabScaffold(
-      tabBar: navigation,
-      tabBuilder: (context, i) {
-        switch (i) {
-          case 0:
-            return CupertinoTabView(builder: (BuildContext context) {
-              return Container(
-                color: CupertinoColors.white,
-                child: HomeContent(
-                  child: ToDoList(),
-                ),
-              );
-            });
-          case 1:
-            return CupertinoTabView(builder: (BuildContext context) {
-              return Container(
-                color: CupertinoColors.white,
-                child: HomeContent(
-                  child: VisitsTab(),
-                ),
-              );
-            });
-          case 2:
-            return CupertinoTabView(builder: (BuildContext context) {
-              return Container(
-                color: CupertinoColors.white,
-                child: HomeContent(
-                  child: PatientsTab(),
-                ),
-              );
-            });
+    final tabBar = CupertinoTabBar(
+      backgroundColor: Color.fromRGBO(249, 249, 249, 0.9),
+      border: Border(
+        top: BorderSide(width: 0.5, color: Color.fromRGBO(0, 0, 0, 0.3)),
+      ),
+      inactiveColor: Color(0xFFBDBDBD),
+      activeColor: Color(0xFF6F3E5D),
+      iconSize: 26,
+      currentIndex: 0,
+      onTap: (int i) {
+        if (_currentIndex == i && i == 1) {
+          visitsNaviKey.currentState.popUntil((r) => r.isFirst);
         }
-        return null;
+
+        setState(() {
+          _currentIndex = i;
+        });
       },
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Padding(
+            padding: EdgeInsets.only(top: 6),
+            child: Icon(OMIcons.eventNote),
+          ),
+          title: Text('To Do List'),
+        ),
+        BottomNavigationBarItem(
+          icon: Padding(
+            padding: EdgeInsets.only(top: 6),
+            child: Icon(OMIcons.filterNone),
+          ),
+          title: Text('Visits'),
+        ),
+        BottomNavigationBarItem(
+          icon: Padding(
+            padding: EdgeInsets.only(top: 6),
+            child: Icon(OMIcons.peopleOutline),
+          ),
+          title: Text('Patients'),
+        )
+      ],
+    );
+
+    return WillPopScope(
+      // Prevent swipe popping of this page. Use explicit exit buttons only.
+      onWillPop: () => Future<bool>.value(true),
+      child: SafeArea(
+        top: false,
+        child: CupertinoTabScaffold(
+          tabBar: tabBar,
+          tabBuilder: tabBuilder,
+        ),
+      ),
     );
   }
 }

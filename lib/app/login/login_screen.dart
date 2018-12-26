@@ -66,18 +66,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(
                       color: Color(globals.color_text_grey), fontSize: 14),
                 ),
-                ButtonTheme(
-                  minWidth: double.minPositive,
-                  child: FlatButton(
-                    child: Text(
-                      "Sign up",
-                      style: TextStyle(
-                          color: Color(globals.color_common_purple),
-                          fontSize: 14),
-                    ),
-                    padding: EdgeInsets.zero,
-                    onPressed: () {},
+                CupertinoButton(
+                  child: Text(
+                    "Sign up",
+                    style: TextStyle(
+                        color: Color(globals.color_common_purple),
+                        fontSize: 14),
                   ),
+                  padding: EdgeInsets.zero,
+                  onPressed: () {},
                 ),
               ],
             ),

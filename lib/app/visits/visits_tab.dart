@@ -1,6 +1,6 @@
-import 'package:firma_prototype/app/_tab_navigator/home_content.dart';
 import 'package:firma_prototype/app/visits/single_visit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import '../../globals.dart' as globals;
 
 class VisitData {
@@ -27,25 +27,8 @@ class _VisitsTabState extends State<VisitsTab> {
     VisitData(visit: 6, date: '20 Dec 2018', patients: 5, completedAmount: 0)
   ];
 
-  int activeVisit = -1;
-
   @override
   Widget build(BuildContext context) {
-    void _setActiveVisit(visitID) {
-      setState(() {
-        // If the lake is currently favorited, unfavorite it.
-        activeVisit = visitID;
-      });
-
-      Navigator.push(
-        context,
-        PageRouteBuilder(pageBuilder: (BuildContext context,
-            Animation<double> animation, Animation<double> secondaryAnimation) {
-          return HomeContent(child: Container());
-        }),
-      );
-    }
-
     return Card(
       elevation: 4.0,
       shape: RoundedRectangleBorder(
@@ -61,7 +44,6 @@ class _VisitsTabState extends State<VisitsTab> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
-                fontFamily: 'CabinBold',
                 color: Color(globals.color_common_purple),
               ),
             ),
@@ -70,8 +52,8 @@ class _VisitsTabState extends State<VisitsTab> {
             padding: EdgeInsets.only(left: 28, right: 28, bottom: 42),
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              children: visitData.map((item) {
-                return SingleVisit(data: item, onChanged: _setActiveVisit);
+              children: visitData.map<Widget>((item) {
+                return SingleVisit(data: item);
               }).toList(),
             ),
           )

@@ -38,7 +38,6 @@ class PatientsTab extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
-                fontFamily: 'CabinBold',
                 color: Color(globals.color_common_purple),
               ),
             ),
@@ -47,7 +46,7 @@ class PatientsTab extends StatelessWidget {
             padding: EdgeInsets.only(left: 28, right: 28, bottom: 42),
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              children: patientData.map((item) {
+              children: patientData.map<Widget>((item) {
                 return SinglePatient(data: item);
               }).toList(),
             ),

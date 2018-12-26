@@ -1,12 +1,22 @@
+import 'package:firma_prototype/app/_tab_navigator/home_content.dart';
+import 'package:firma_prototype/app/patients/patients_tab.dart';
+import 'package:firma_prototype/app/visits/q_form.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
-// import 'package:flutter/material.dart';
 
-class HomeContent extends StatelessWidget {
-  final Widget child;
-  const HomeContent({Key key, this.child}) : super(key: key);
+class SinglePatientQtn extends StatefulWidget {
+  final PatientData data;
+  final int visitID;
 
+  SinglePatientQtn({Key key, @required this.data, this.visitID})
+      : super(key: key);
+
+  @override
+  _SinglePatientQtnState createState() => _SinglePatientQtnState();
+}
+
+class _SinglePatientQtnState extends State<SinglePatientQtn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,19 +28,33 @@ class HomeContent extends StatelessWidget {
               color: Color(0xFF6F3E5D),
               height: 188,
               width: double.infinity,
-              child: bigOval(width: MediaQuery.of(context).size.width + 50),
+              child: HomeContent.bigOval(
+                  width: MediaQuery.of(context).size.width + 50),
             ),
             Padding(
               padding: EdgeInsets.only(
                   top: MediaQuery.of(context).padding.top + 30.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  GestureDetector(
+                    child: Padding(
+                      child: Icon(
+                        OMIcons.arrowBackIos,
+                        color: Colors.white,
+                      ),
+                      padding: EdgeInsets.only(left: 14, right: 14, bottom: 10),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
                   _textRow(),
                   Expanded(
                     child: SingleChildScrollView(
-                      child: child,
+                      child: QForm(),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
@@ -42,7 +66,7 @@ class HomeContent extends StatelessWidget {
 
   Widget _textRow() {
     return Padding(
-      padding: const EdgeInsets.only(left: 21, right: 21, bottom: 18),
+      padding: const EdgeInsets.only(left: 21, right: 21, bottom: 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,58 +75,36 @@ class HomeContent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                'Hello',
+                widget.data.patientName,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 24,
+                  fontSize: 20,
                 ),
               ),
               Text(
-                'Silvia Erin',
+                "Visit " + widget.visitID.toString(),
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 32,
+                  fontSize: 20,
                 ),
               ),
               Text(
                 'Wednesday, 14th of Dec',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 12,
+                  fontSize: 10,
                 ),
-              )
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              Icon(
-                OMIcons.menu,
-                color: Colors.white,
+              ),
+              Text(
+                'ID M 3216549874634987',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                ),
               )
             ],
           )
         ],
-      ),
-    );
-  }
-
-  static Widget bigOval({double width}) {
-    return RotationTransition(
-      turns: AlwaysStoppedAnimation(152 / 360),
-      alignment: Alignment(0.05, -0.2),
-      child: Container(
-        decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.all(
-            Radius.elliptical(width, 250.0),
-          ),
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xFF2C051E), Color(0xFFAD5389)],
-          ),
-        ),
       ),
     );
   }

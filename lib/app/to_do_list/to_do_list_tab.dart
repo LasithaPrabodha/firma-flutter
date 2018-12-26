@@ -25,7 +25,6 @@ class ToDoList extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
-                  fontFamily: 'CabinBold',
                   color: Color(globals.color_common_purple),
                 ),
               )
