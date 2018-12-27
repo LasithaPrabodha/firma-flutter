@@ -5,6 +5,7 @@ import 'app/_tab_navigator/home_screen.dart';
 
 import 'app/login/login_screen.dart';
 import 'app/login/logo_screen.dart';
+import './globals.dart' as globals;
 
 void main() => runApp(MyApp());
 
@@ -26,11 +27,14 @@ class MyApp extends StatelessWidget {
         //   border: outLineInputBorder,
         //   enabledBorder: outLineInputBorder,
         //   focusedBorder: outLineInputBorder,
-        //   labelStyle: TextStyle(
-        //       color: Color(globals.color_common_purple), fontSize: 14),
+        // labelStyle: TextStyle(
+        //   color: Color(globals.color_common_purple),
+        //   fontSize: 14,
+        //   fontFamily: "CabinBold",
+        // ),
         //   prefixStyle: TextStyle(color: Color(globals.color_common_purple)),
         // ),
-        fontFamily: "CabinBold"
+        fontFamily: "CabinBold",
       ),
       routes: _routes,
     );

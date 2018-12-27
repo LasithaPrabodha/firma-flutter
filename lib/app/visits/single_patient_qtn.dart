@@ -52,6 +52,7 @@ class _SinglePatientQtnState extends State<SinglePatientQtn> {
                   _textRow(),
                   Expanded(
                     child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
                       child: QForm(),
                     ),
                   )
