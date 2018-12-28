@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 import './login_form.dart';
 import '../../globals.dart' as globals;
 
@@ -97,8 +97,11 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     });
 
-    return Scaffold(
-      body: layout,
+    return CupertinoPageScaffold(
+      child: DefaultTextStyle(
+        style: TextStyle(fontFamily: "CabinBold"),
+        child: layout,
+      ),
     );
   }
 }

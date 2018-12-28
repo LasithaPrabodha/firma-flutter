@@ -53,37 +53,29 @@ class SingleVisitPatients extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 4.0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(28.0),
-      ),
-      margin: const EdgeInsets.symmetric(horizontal: 21.0),
-      child: Column(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(16),
-            child: Text(
-              'Visit ' + visitID.toString(),
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-                color: Color(globals.color_common_purple),
-              ),
+    return Column(
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.all(16),
+          child: Text(
+            'Visit ' + visitID.toString(),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+              color: Color(globals.color_common_purple),
             ),
           ),
-          Container(
-            padding: EdgeInsets.only(left: 28, right: 28, bottom: 42),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: patientData.map<Widget>((item) {
-                return SinglePatient(
-                    data: item, isVisit: true, visitID: visitID);
-              }).toList(),
-            ),
-          )
-        ],
-      ),
+        ),
+        Container(
+          padding: EdgeInsets.only(left: 28, right: 28, bottom: 42),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: patientData.map<Widget>((item) {
+              return SinglePatient(data: item, isVisit: true, visitID: visitID);
+            }).toList(),
+          ),
+        )
+      ],
     );
   }
 }

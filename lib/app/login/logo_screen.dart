@@ -57,12 +57,15 @@ class _LogoScreenState extends State<LogoScreen> {
     );
 
     return CupertinoPageScaffold(
-      child: Center(
-        child: FractionallySizedBox(
-          widthFactor: 0.4,
-          heightFactor: 0.4,
-          child: Container(
-            child: hero,
+      child: DefaultTextStyle(
+        style: TextStyle(fontFamily: "CabinBold"),
+        child: Center(
+          child: FractionallySizedBox(
+            widthFactor: 0.4,
+            heightFactor: 0.4,
+            child: Container(
+              child: hero,
+            ),
           ),
         ),
       ),

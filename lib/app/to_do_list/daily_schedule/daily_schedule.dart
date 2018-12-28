@@ -12,6 +12,7 @@ class DailySchedule extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 11, top: 15),
       child: ListView.builder(
+        padding: EdgeInsets.all(0),
         shrinkWrap: true,
         itemCount: dailyList.length,
         physics: NeverScrollableScrollPhysics(),

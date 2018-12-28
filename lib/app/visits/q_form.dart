@@ -24,193 +24,46 @@ class _QForm extends State<QForm> {
     ];
     const list3 = [
       'No',
-      'Yes (if “Yes” Contact Investigator site and list below)',
+      'Yes (if "Yes" Contact Investigator site and list below)',
     ];
-    return Card(
-      elevation: 4.0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(28.0),
-      ),
-      margin: const EdgeInsets.symmetric(horizontal: 21.0),
-      child: Container(
-        padding: EdgeInsets.only(top: 18, bottom: 46),
-        width: double.maxFinite,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(bottom: 10),
-              child: Text(
-                'Patient Questionnaire',
-                style: TextStyle(
-                  color: Color(globals.color_common_purple),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                ),
+    return Container(
+      padding: EdgeInsets.only(top: 18, bottom: 60),
+      width: double.maxFinite,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(bottom: 10),
+            child: Text(
+              'Patient Questionnaire',
+              style: TextStyle(
+                color: Color(globals.color_common_purple),
+                fontWeight: FontWeight.bold,
+                fontSize: 25,
               ),
             ),
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  _greyContainer(
-                    child: Column(
-                      children: <Widget>[
-                        _highlightedQ('Check Visit (check one)'),
-                        _radionButtonSet(list1)
-                      ],
-                    ),
+          ),
+          Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                _greyContainer(
+                  child: Column(
+                    children: <Widget>[
+                      _highlightedQ('Check Visit (check one)'),
+                      _radionButtonSet(list1)
+                    ],
                   ),
-                  _normalContainer(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 6),
-                          child: Text(
-                            'Blood Sample Collection',
-                            style: TextStyle(
-                              color: Color(globals.color_common_purple),
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        _highlightedQ(
-                            'A1. Was the pharmacokinetic (pk) samplecollected & prosessed per protocol?'),
-                        _radionButtonSet(list2),
-                        _commentBox()
-                      ],
-                    ),
-                  ),
-                  _normalContainer(
-                    child: Column(
-                      children: <Widget>[
-                        _highlightedQ(
-                            'A2. Please provide exact date and time of collection'),
-                        _inputWithLabel(
-                            type: 'date', label: 'Date of collection'),
-                        _inputWithLabel(
-                            type: 'time', label: 'Time of collection')
-                      ],
-                    ),
-                  ),
-                  _normalContainer(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        _highlightedQ(
-                            'A3. Document the courier name and tracking number for the blood sample'),
-                        _inputWithLabel(type: 'text', label: 'Courier Name'),
-                        _inputWithLabel(type: 'num', label: 'Tracking Number')
-                      ],
-                    ),
-                  ),
-                  _greyContainer(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 6),
-                          child: Text(
-                            'Assessment Of Changes In Health And Medicaton',
-                            style: TextStyle(
-                              color: Color(globals.color_common_purple),
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        _highlightedQ(
-                            'B1. Did the subject report (unslicited) any changes in health or medication during the visit?'),
-                        _radionButtonSet(list3),
-                        Container(
-                          padding: EdgeInsets.only(top: 10, bottom: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                'a. Name of individual contacted',
-                                style: TextStyle(
-                                  color: Color(globals.color_common_purple),
-                                  fontSize: 14,
-                                ),
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Flexible(
-                                    child: Text(
-                                      'at the Site ',
-                                      style: TextStyle(
-                                        color:
-                                            Color(globals.color_common_purple),
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ),
-                                  Flexible(
-                                      child: inputField(
-                                          keyboardType:
-                                              TextInputType.multiline))
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Expanded(
-                                    flex: 8,
-                                    child: Container(
-                                      child: Column(
-                                        children: <Widget>[
-                                          _inputWithLabel(
-                                              type: 'date',
-                                              label: 'Date',
-                                              flex1: 3,
-                                              flex2: 7),
-                                          _inputWithLabel(
-                                              type: 'time',
-                                              label: 'Time',
-                                              flex1: 3,
-                                              flex2: 7)
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 2,
-                                    child: Container(),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 5, bottom: 10),
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                'b. Describe any symptoms as reported by the patient',
-                                style: TextStyle(
-                                  color: Color(globals.color_common_purple),
-                                  fontSize: 14,
-                                ),
-                              ),
-                              _commentBox()
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  _normalContainer(
-                      child: Column(
+                ),
+                _normalContainer(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.only(bottom: 6),
                         child: Text(
-                          'Remote Visit service\nProvider Signature',
+                          'Blood Sample Collection',
                           style: TextStyle(
                             color: Color(globals.color_common_purple),
                             fontSize: 18,
@@ -218,23 +71,169 @@ class _QForm extends State<QForm> {
                           ),
                         ),
                       ),
-                      _inputWithLabel(
-                          type: 'text', label: 'RVSP Full Name', maxLines: 2),
-                      _inputWithLabel(type: 'date', label: 'Date')
+                      _highlightedQ(
+                          'A1. Was the pharmacokinetic (pk) samplecollected & prosessed per protocol?'),
+                      _radionButtonSet(list2),
+                      _commentBox()
                     ],
-                  ))
-                ],
-              ),
+                  ),
+                ),
+                _normalContainer(
+                  child: Column(
+                    children: <Widget>[
+                      _highlightedQ(
+                          'A2. Please provide exact date and time of collection'),
+                      _inputWithLabel(
+                          type: 'date', label: 'Date of collection'),
+                      _inputWithLabel(type: 'time', label: 'Time of collection')
+                    ],
+                  ),
+                ),
+                _normalContainer(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      _highlightedQ(
+                          'A3. Document the courier name and tracking number for the blood sample'),
+                      _inputWithLabel(type: 'text', label: 'Courier Name'),
+                      _inputWithLabel(type: 'num', label: 'Tracking Number')
+                    ],
+                  ),
+                ),
+                _greyContainer(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 6),
+                        child: Text(
+                          'Assessment Of Changes In Health And Medicaton',
+                          style: TextStyle(
+                            color: Color(globals.color_common_purple),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      _highlightedQ(
+                          'B1. Did the subject report (unslicited) any changes in health or medication during the visit?'),
+                      _radionButtonSet(list3),
+                      Container(
+                        padding: EdgeInsets.only(top: 10, bottom: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'a. Name of individual contacted',
+                              style: TextStyle(
+                                color: Color(globals.color_common_purple),
+                                fontSize: 14,
+                              ),
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Flexible(
+                                  flex: 3,
+                                  child: Text(
+                                    'at the Site ',
+                                    style: TextStyle(
+                                      color: Color(globals.color_common_purple),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                                Flexible(
+                                  flex: 7,
+                                  child: _inputField(
+                                      keyboardType: TextInputType.multiline),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  flex: 8,
+                                  child: Container(
+                                    child: Column(
+                                      children: <Widget>[
+                                        _inputWithLabel(
+                                            type: 'date',
+                                            label: 'Date',
+                                            flex1: 3,
+                                            flex2: 7),
+                                        _inputWithLabel(
+                                            type: 'time',
+                                            label: 'Time',
+                                            flex1: 3,
+                                            flex2: 7)
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Container(),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(top: 5, bottom: 10),
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              'b. Describe any symptoms as reported by the patient',
+                              style: TextStyle(
+                                color: Color(globals.color_common_purple),
+                                fontSize: 14,
+                              ),
+                            ),
+                            _commentBox()
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                _normalContainer(
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 6),
+                      child: Text(
+                        'Remote Visit service\nProvider Signature',
+                        style: TextStyle(
+                          color: Color(globals.color_common_purple),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    _inputWithLabel(
+                        type: 'text', label: 'RVSP Full Name', maxLines: 2),
+                    _inputWithLabel(type: 'date', label: 'Date')
+                  ],
+                ))
+              ],
             ),
-            CupertinoButton(
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 20),
+            child: CupertinoButton(
               child: Text(
                 'Submit',
+                style: TextStyle(fontSize: 14),
               ),
               onPressed: () {},
+              borderRadius: BorderRadius.circular(1),
+              padding: EdgeInsets.symmetric(horizontal: 84, vertical: 8),
               color: Color(globals.color_common_purple),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -393,7 +392,7 @@ class _QForm extends State<QForm> {
                         (DateTime newDateTime) {
                         setState(() => time = newDateTime);
                       })
-                    : inputField(
+                    : _inputField(
                         keyboardType: type == 'num'
                             ? TextInputType.number
                             : TextInputType.multiline,
@@ -404,13 +403,13 @@ class _QForm extends State<QForm> {
     );
   }
 
-  Widget inputField({TextInputType keyboardType, int maxLines}) {
+  Widget _inputField({TextInputType keyboardType, int maxLines}) {
     return CupertinoTextField(
       maxLines: maxLines,
       decoration: BoxDecoration(
         border:
             Border.all(color: Color.fromRGBO(111, 62, 93, 0.62), width: 0.5),
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(1),
       ),
       style: TextStyle(fontSize: 14, color: Color(globals.color_common_purple)),
       keyboardType: keyboardType,

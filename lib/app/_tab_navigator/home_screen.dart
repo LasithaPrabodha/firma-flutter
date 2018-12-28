@@ -59,8 +59,9 @@ class _HomeState extends State<Home> {
       iconSize: 26,
       currentIndex: 0,
       onTap: (int i) {
-        if (_currentIndex == i && i == 1) {
-          visitsNaviKey.currentState.popUntil((r) => r.isFirst);
+        if (_currentIndex == i) {
+          if (i == 0) toDoNaviKey.currentState.popUntil((r) => r.isFirst);
+          if (i == 1) visitsNaviKey.currentState.popUntil((r) => r.isFirst);
         }
 
         setState(() {

@@ -1,4 +1,7 @@
 import 'dart:math';
+import 'package:firma_prototype/app/common/cabin_text_style.dart';
+import 'package:firma_prototype/app/visits/single_patient_qtn.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'column_data.dart';
 import 'tick_icon.dart';
@@ -6,11 +9,20 @@ import 'tick_icon.dart';
 class DailyTask extends StatelessWidget {
   final ColumnData cardData;
   const DailyTask({Key key, this.cardData}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
-    Random  rnd = new Random();
-    int rndNo = 1 + rnd.nextInt(4 - 1); 
+    Random rnd = new Random();
+    int rndNo = 1 + rnd.nextInt(4 - 1);
+    void _onTapHandle() {
+      Navigator.push(
+        context,
+        CupertinoPageRoute(builder: (BuildContext context) {
+          return SinglePatientQtn(
+              patientName: cardData.patient, visitID: cardData.visit);
+        }),
+      );
+    }
 
     return Container(
       margin: EdgeInsets.only(bottom: 4),
@@ -26,6 +38,7 @@ class DailyTask extends StatelessWidget {
             )
           ]),
       child: ListTile(
+        onTap: _onTapHandle,
         contentPadding: EdgeInsets.symmetric(
           horizontal: 16.0,
         ),
@@ -38,28 +51,31 @@ class DailyTask extends StatelessWidget {
                   color: Color(0xFFE0E0E0),
                 ),
         ),
-        title: GridView.count(
-          crossAxisCount: 2,
-          shrinkWrap: true,
-          childAspectRatio: (10 / 4),
-          physics: NeverScrollableScrollPhysics(),
-          children: <Widget>[
-            _singleColumn(
-                isLeft: true,
-                data: ColumnData(
-                  from: cardData.from,
-                  to: cardData.to,
-                )),
-            _singleColumn(
-                isLeft: false,
-                data: ColumnData(
-                  patient: cardData.patient,
-                  visit: cardData.visit,
-                )),
-          ],
+        title: CabinBoldTextStyle(
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                child: _singleColumn(
+                    isLeft: true,
+                    data: ColumnData(
+                      from: cardData.from,
+                      to: cardData.to,
+                    )),
+              ),
+              Expanded(
+                child: _singleColumn(
+                    isLeft: false,
+                    data: ColumnData(
+                      patient: cardData.patient,
+                      visit: cardData.visit,
+                    )),
+              ),
+            ],
+          ),
         ),
         trailing: CircleAvatar(
-          backgroundImage: ExactAssetImage('assets/images/avatar'+ rndNo.toString()  +'.png'),
+          backgroundImage: ExactAssetImage(
+              'assets/images/avatar' + rndNo.toString() + '.png'),
         ),
       ),
     );
@@ -68,7 +84,7 @@ class DailyTask extends StatelessWidget {
   Widget _singleColumn({bool isLeft, ColumnData data}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         isLeft
             ? Text(
@@ -94,9 +110,9 @@ class DailyTask extends StatelessWidget {
                       data.patient,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        color: Color(0xFF6F3E5D),
-                        fontSize: 12,
-                      ),
+                          color: Color(0xFF6F3E5D),
+                          fontSize: 12,
+                          fontFamily: "CabinBold"),
                     ),
                   )
                 ],
@@ -104,7 +120,7 @@ class DailyTask extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(left: isLeft ? 0 : 8),
           child: Text(
-            isLeft ? data.to : data.visit,
+            isLeft ? data.to : 'visit ' + data.visit.toString(),
             style: TextStyle(
               color: Color.fromRGBO(111, 62, 93, 0.62),
               fontSize: isLeft ? 12 : 10,

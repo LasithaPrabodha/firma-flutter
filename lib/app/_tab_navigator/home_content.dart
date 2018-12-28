@@ -1,17 +1,18 @@
-// import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:firma_prototype/app/common/card_layout.dart';
+import 'package:flutter/cupertino.dart';
+// import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 // import 'package:flutter/material.dart';
 
 class HomeContent extends StatelessWidget {
   final Widget child;
-  const HomeContent({Key key, this.child}) : super(key: key);
+  const HomeContent({this.child});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Material(
-        type: MaterialType.transparency,
+    return CupertinoPageScaffold(
+      child: DefaultTextStyle(
+        style: TextStyle(fontFamily: "CabinBold"),
         child: Stack(
           children: <Widget>[
             Container(
@@ -28,7 +29,7 @@ class HomeContent extends StatelessWidget {
                   _textRow(),
                   Expanded(
                     child: SingleChildScrollView(
-                      child: child,
+                      child: CardLayout(child: child),
                     ),
                   ),
                 ],
@@ -53,21 +54,21 @@ class HomeContent extends StatelessWidget {
               Text(
                 'Hello',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: CupertinoColors.white,
                   fontSize: 24,
                 ),
               ),
               Text(
                 'Silvia Erin',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: CupertinoColors.white,
                   fontSize: 32,
                 ),
               ),
               Text(
                 'Wednesday, 14th of Dec',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: CupertinoColors.white,
                   fontSize: 12,
                 ),
               )
@@ -78,7 +79,7 @@ class HomeContent extends StatelessWidget {
             children: <Widget>[
               Icon(
                 OMIcons.menu,
-                color: Colors.white,
+                color: CupertinoColors.white,
               )
             ],
           )

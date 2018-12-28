@@ -1,3 +1,4 @@
+import 'package:firma_prototype/app/common/cabin_text_style.dart';
 import 'package:firma_prototype/app/patients/patients_tab.dart';
 import 'package:firma_prototype/app/visits/single_patient_qtn.dart';
 import 'package:flutter/material.dart';
@@ -16,13 +17,16 @@ class SinglePatient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void _handleTap() {
-      Navigator.push(
-        context,
-        CupertinoPageRoute(builder: (BuildContext context) {
-          return SinglePatientQtn(data: data, visitID: visitID);
-        }),
-      );
+      if (isVisit)
+        Navigator.push(
+          context,
+          CupertinoPageRoute(builder: (BuildContext context) {
+            return SinglePatientQtn(
+                patientName: data.patientName, visitID: visitID);
+          }),
+        );
     }
+
     return Container(
       margin: EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
@@ -41,61 +45,63 @@ class SinglePatient extends StatelessWidget {
           horizontal: 10,
           vertical: 8,
         ),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              data.patientName.toString(),
-              style: TextStyle(
-                color: Color(globals.color_common_purple),
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
+        title:  CabinBoldTextStyle(
+          child:Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                data.patientName.toString(),
+                style: TextStyle(
+                  color: Color(globals.color_common_purple),
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            Text(
-              data.age.toString() + ' Years',
-              style: TextStyle(
-                color: Color(globals.color_common_purple),
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
+              Text(
+                data.age.toString() + ' Years',
+                style: TextStyle(
+                  color: Color(globals.color_common_purple),
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            Text(
-              "Last Visit " + data.lastVisit.toString(),
-              style: TextStyle(
-                color: Color.fromRGBO(111, 62, 93, 0.62),
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
+              Text(
+                "Last Visit " + data.lastVisit.toString(),
+                style: TextStyle(
+                  color: Color.fromRGBO(111, 62, 93, 0.62),
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            isVisit
-                ? Text(
-                    "Visit " + visitID.toString(),
-                    style: TextStyle(
-                      color: Color.fromRGBO(111, 62, 93, 0.62),
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                : Row(
-                    children: <Widget>[
-                      Text(
-                        "Progress ",
-                        style: TextStyle(
-                          color: Color.fromRGBO(111, 62, 93, 0.62),
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
+              isVisit
+                  ? Text(
+                      "Visit " + visitID.toString(),
+                      style: TextStyle(
+                        color: Color.fromRGBO(111, 62, 93, 0.62),
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  : Row(
+                      children: <Widget>[
+                        Text(
+                          "Progress ",
+                          style: TextStyle(
+                            color: Color.fromRGBO(111, 62, 93, 0.62),
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Row(
-                        children: [
-                          _createProgress(data.progress),
-                          _createRest(10 - data.progress)
-                        ].expand((x) => x).toList(),
-                      ),
-                    ],
-                  )
-          ],
+                        Row(
+                          children: [
+                            _createProgress(data.progress),
+                            _createRest(10 - data.progress)
+                          ].expand((x) => x).toList(),
+                        ),
+                      ],
+                    )
+            ],
+          ),
         ),
         trailing: CircleAvatar(
           radius: 32,

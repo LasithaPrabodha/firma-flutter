@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class Date {
@@ -14,42 +14,45 @@ class HorizontalTimeline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Container(
-          color: Color(0xFFF2F2F2),
-          height: 46,
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Expanded(
-              flex: 2,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 12,vertical: 8),
-                child: Text(
-                  DateFormat('MMM').format(now),
-                  style: TextStyle(
-                    color: Color.fromRGBO(111, 62, 93, 0.62),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
+    return Container(
+      margin: EdgeInsets.only(bottom: 8),
+      child: Stack(
+        children: <Widget>[
+          Container(
+            color: Color(0xFFF2F2F2),
+            height: 46,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Expanded(
+                flex: 2,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: Text(
+                    DateFormat('MMM').format(now),
+                    style: TextStyle(
+                      color: Color.fromRGBO(111, 62, 93, 0.62),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 8,
-              child: Container(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: _dates(),
+              Expanded(
+                flex: 8,
+                child: Container(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: _dates(),
+                  ),
                 ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -102,7 +105,7 @@ class HorizontalTimeline extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                     color: Color.fromARGB(100, 0, 0, 0),
-                    offset: new Offset(0, 4),
+                    offset: Offset(0, 4),
                     blurRadius: 3.0,
                   ),
                 ],
@@ -112,7 +115,7 @@ class HorizontalTimeline extends StatelessWidget {
                   Text(
                     item.weekDay,
                     style: TextStyle(
-                      color: CupertinoColors.white,
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
                     ),
@@ -120,7 +123,7 @@ class HorizontalTimeline extends StatelessWidget {
                   Text(
                     item.day,
                     style: TextStyle(
-                      color: CupertinoColors.white,
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                     ),

@@ -1,15 +1,15 @@
 import 'package:firma_prototype/app/_tab_navigator/home_content.dart';
-import 'package:firma_prototype/app/patients/patients_tab.dart';
+import 'package:firma_prototype/app/common/card_layout.dart';
 import 'package:firma_prototype/app/visits/q_form.dart';
-// import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+// import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 
 class SinglePatientQtn extends StatefulWidget {
-  final PatientData data;
+  final String patientName;
   final int visitID;
 
-  SinglePatientQtn({Key key, @required this.data, this.visitID})
+  SinglePatientQtn({Key key, @required this.patientName, this.visitID})
       : super(key: key);
 
   @override
@@ -19,9 +19,9 @@ class SinglePatientQtn extends StatefulWidget {
 class _SinglePatientQtnState extends State<SinglePatientQtn> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Material(
-        type: MaterialType.transparency,
+    return CupertinoPageScaffold(
+      child: DefaultTextStyle(
+        style: TextStyle(fontFamily: "CabinBold"),
         child: Stack(
           children: <Widget>[
             Container(
@@ -41,9 +41,10 @@ class _SinglePatientQtnState extends State<SinglePatientQtn> {
                     child: Padding(
                       child: Icon(
                         OMIcons.arrowBackIos,
-                        color: Colors.white,
+                        color: CupertinoColors.white,
+                        size: 20,
                       ),
-                      padding: EdgeInsets.only(left: 14, right: 14, bottom: 10),
+                      padding: EdgeInsets.only(left: 16, right: 16, bottom: 10),
                     ),
                     onTap: () {
                       Navigator.pop(context);
@@ -53,7 +54,7 @@ class _SinglePatientQtnState extends State<SinglePatientQtn> {
                   Expanded(
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
-                      child: QForm(),
+                      child: CardLayout(child: QForm()),
                     ),
                   )
                 ],
@@ -76,30 +77,30 @@ class _SinglePatientQtnState extends State<SinglePatientQtn> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                widget.data.patientName,
+                widget.patientName,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: CupertinoColors.white,
                   fontSize: 20,
                 ),
               ),
               Text(
                 "Visit " + widget.visitID.toString(),
                 style: TextStyle(
-                  color: Colors.white,
+                  color: CupertinoColors.white,
                   fontSize: 20,
                 ),
               ),
               Text(
                 'Wednesday, 14th of Dec',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: CupertinoColors.white,
                   fontSize: 10,
                 ),
               ),
               Text(
                 'ID M 3216549874634987',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: CupertinoColors.white,
                   fontSize: 10,
                 ),
               )
