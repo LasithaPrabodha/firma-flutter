@@ -1,6 +1,6 @@
-import 'package:firma_prototype/app/patients/single_patient.dart';
+import 'package:firma_prototype/app/home/patients/single_patient.dart';
 import 'package:flutter/material.dart';
-import '../../globals.dart' as globals;
+import 'package:firma_prototype/globals.dart' as globals;
 
 class PatientData {
   final String patientName;

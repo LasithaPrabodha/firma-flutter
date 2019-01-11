@@ -17,7 +17,7 @@ class DailySchedule extends StatelessWidget {
         itemCount: dailyList.length,
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (BuildContext c, int i) =>
-            DailyTask(cardData: dailyList[i]),
+            DailyTask(cardData: dailyList[i], ),
       ),
     );
   }

@@ -20,6 +20,7 @@ class WeeklyList extends StatelessWidget {
           to: '11.30 am',
           patient: 'Clara Eve',
           visit: 1,
+          img: 'avatar3',
           done: true,
         ),
         ColumnData(
@@ -27,20 +28,23 @@ class WeeklyList extends StatelessWidget {
           to: '2.30 am',
           patient: 'Henry Jackson',
           visit: 1,
+          img: 'avatar1',
           done: true,
-        ),
-        ColumnData(
-          from: '3.00 am',
-          to: '4.30 am',
-          patient: 'Calvin Abel',
-          visit: 1,
-          done: false,
         ),
         ColumnData(
           from: '5.15 am',
           to: '6.00 am',
           patient: 'Daisy Beverly',
           visit: 1,
+          img: 'avatar4',
+          done: false,
+        ),
+        ColumnData(
+          from: '3.00 am',
+          to: '4.30 am',
+          patient: 'Calvin Abel',
+          visit: 1,
+          img: 'avatar2',
           done: false,
         ),
       ],
@@ -49,17 +53,19 @@ class WeeklyList extends StatelessWidget {
       day: new DateTime.now().add(Duration(days: 1)),
       schedule: <ColumnData>[
         ColumnData(
+          from: '5.15 am',
+          to: '6.00 am',
+          patient: 'Daisy Beverly',
+          visit: 1,
+          img: 'avatar4',
+          done: false,
+        ),
+        ColumnData(
           from: '9.30 am',
           to: '11.30 am',
           patient: 'Clara Eve',
           visit: 1,
-          done: false,
-        ),
-        ColumnData(
-          from: '1.30 am',
-          to: '2.30 am',
-          patient: 'Henry Jackson',
-          visit: 1,
+          img: 'avatar3',
           done: false,
         ),
         ColumnData(
@@ -67,13 +73,15 @@ class WeeklyList extends StatelessWidget {
           to: '4.30 am',
           patient: 'Calvin Abel',
           visit: 1,
+          img: 'avatar2',
           done: false,
         ),
         ColumnData(
-          from: '5.15 am',
-          to: '6.00 am',
-          patient: 'Daisy Beverly',
+          from: '1.30 am',
+          to: '2.30 am',
+          patient: 'Henry Jackson',
           visit: 1,
+          img: 'avatar1',
           done: false,
         ),
       ],
@@ -97,7 +105,9 @@ class WeeklyList extends StatelessWidget {
                   Text(
                     new DateFormat('EEEE').format(_list[i].day),
                     style: TextStyle(
-                      color: i == 0 ? Color(0xFF6F3E5D) : Color.fromRGBO(111, 62, 93, 0.62),
+                      color: i == 0
+                          ? Color(0xFF6F3E5D)
+                          : Color.fromRGBO(111, 62, 93, 0.62),
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
                     ),

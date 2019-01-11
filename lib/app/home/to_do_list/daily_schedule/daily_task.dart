@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:firma_prototype/app/common/cabin_text_style.dart';
-import 'package:firma_prototype/app/visits/single_patient_qtn.dart';
+import 'package:firma_prototype/app/home/visits/single_patient_qtn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'column_data.dart';
@@ -12,8 +12,6 @@ class DailyTask extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Random rnd = new Random();
-    int rndNo = 1 + rnd.nextInt(4 - 1);
     void _onTapHandle() {
       Navigator.push(
         context,
@@ -75,7 +73,7 @@ class DailyTask extends StatelessWidget {
         ),
         trailing: CircleAvatar(
           backgroundImage: ExactAssetImage(
-              'assets/images/avatar' + rndNo.toString() + '.png'),
+              'assets/images/' + cardData.img + '.png'),
         ),
       ),
     );

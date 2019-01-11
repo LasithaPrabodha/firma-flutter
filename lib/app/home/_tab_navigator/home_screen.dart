@@ -1,10 +1,13 @@
-import 'package:firma_prototype/app/patients/patients_tab.dart';
-import 'package:firma_prototype/app/visits/visits_tab.dart';
+import 'dart:async';
+
+import 'package:firma_prototype/app/home/patients/patients_tab.dart';
+import 'package:firma_prototype/app/home/visits/visits_tab.dart';
 import 'package:flutter/cupertino.dart';
+
 // import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'home_content.dart';
-import '../to_do_list/to_do_list_tab.dart';
+import 'package:firma_prototype/app/home/to_do_list/to_do_list_tab.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -45,6 +48,25 @@ class _HomeState extends State<Home> {
             });
     }
     return null;
+  }
+
+  Future _exitApp(BuildContext context) {
+    return CupertinoAlertDialog(
+          title: const Text('Do you want to exit this application?'),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              child: const Text('No'),
+              isDestructiveAction: true,
+              onPressed: () => Navigator.of(context).pop(false),
+            ),
+            CupertinoDialogAction(
+              child: const Text('Yes'),
+              isDefaultAction: true,
+              onPressed: () => Navigator.of(context).pop(true),
+            ),
+          ],
+        ) ??
+        false;
   }
 
   @override
@@ -95,7 +117,7 @@ class _HomeState extends State<Home> {
 
     return WillPopScope(
       // Prevent swipe popping of this page. Use explicit exit buttons only.
-      onWillPop: () => Future<bool>.value(true),
+      onWillPop: () => _exitApp(context),
       child: SafeArea(
         top: false,
         child: CupertinoTabScaffold(

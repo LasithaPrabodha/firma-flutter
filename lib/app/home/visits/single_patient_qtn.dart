@@ -1,6 +1,7 @@
-import 'package:firma_prototype/app/_tab_navigator/home_content.dart';
+import 'package:firma_prototype/app/common/cabin_text_style.dart';
+import 'package:firma_prototype/app/home/_tab_navigator/home_content.dart';
 import 'package:firma_prototype/app/common/card_layout.dart';
-import 'package:firma_prototype/app/visits/q_form.dart';
+import 'package:firma_prototype/app/home/visits/q_form.dart';
 import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
@@ -20,8 +21,7 @@ class _SinglePatientQtnState extends State<SinglePatientQtn> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      child: DefaultTextStyle(
-        style: TextStyle(fontFamily: "CabinBold"),
+      child: CabinBoldTextStyle(
         child: Stack(
           children: <Widget>[
             Container(

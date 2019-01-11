@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'horizontal_timeline.dart';
 import 'weekly_list.dart';
 
-import '../../globals.dart' as globals;
+import 'package:firma_prototype/globals.dart' as globals;
 
 class ToDoList extends StatelessWidget {
   @override

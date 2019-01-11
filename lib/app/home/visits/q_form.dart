@@ -1,7 +1,7 @@
-import 'package:firma_prototype/app/visits/date_time.dart';
+import 'package:firma_prototype/app/home/visits/date_time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../../globals.dart' as globals;
+import 'package:firma_prototype/globals.dart' as globals;
 
 class QForm extends StatefulWidget {
   @override

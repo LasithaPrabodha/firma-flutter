@@ -1,3 +1,4 @@
+import 'package:firma_prototype/app/common/cabin_text_style.dart';
 import 'package:flutter/material.dart';
 
 class CardLayout extends StatelessWidget {
@@ -11,10 +12,7 @@ class CardLayout extends StatelessWidget {
         borderRadius: BorderRadius.circular(28.0),
       ),
       margin: const EdgeInsets.symmetric(horizontal: 21.0),
-      child: DefaultTextStyle(
-        style: TextStyle(
-          fontFamily: "CabinBold",
-        ),
+      child: CabinBoldTextStyle(
         child: child,
       ),
     );

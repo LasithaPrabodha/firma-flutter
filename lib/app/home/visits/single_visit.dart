@@ -1,11 +1,11 @@
-import 'package:firma_prototype/app/_tab_navigator/home_content.dart';
+import 'package:firma_prototype/app/home/_tab_navigator/home_content.dart';
 import 'package:firma_prototype/app/common/cabin_text_style.dart';
-import 'package:firma_prototype/app/to_do_list/daily_schedule/tick_icon.dart';
-import 'package:firma_prototype/app/visits/single_visit_patients.dart';
-import 'package:firma_prototype/app/visits/visits_tab.dart';
+import 'package:firma_prototype/app/home/to_do_list/daily_schedule/tick_icon.dart';
+import 'package:firma_prototype/app/home/visits/single_visit_patients.dart';
+import 'package:firma_prototype/app/home/visits/visits_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../../globals.dart' as globals;
+import 'package:firma_prototype/globals.dart' as globals;
 
 class SingleVisit extends StatelessWidget {
   final VisitData data;

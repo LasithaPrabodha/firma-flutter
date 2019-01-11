@@ -1,7 +1,7 @@
-import 'package:firma_prototype/app/visits/single_visit.dart';
+import 'package:firma_prototype/app/home/visits/single_visit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../../globals.dart' as globals;
+import 'package:firma_prototype/globals.dart' as globals;
 
 class VisitData {
   final int visit;

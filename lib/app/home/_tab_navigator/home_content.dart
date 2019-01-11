@@ -1,3 +1,4 @@
+import 'package:firma_prototype/app/common/cabin_text_style.dart';
 import 'package:firma_prototype/app/common/card_layout.dart';
 import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
@@ -11,8 +12,7 @@ class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      child: DefaultTextStyle(
-        style: TextStyle(fontFamily: "CabinBold"),
+      child: CabinBoldTextStyle(
         child: Stack(
           children: <Widget>[
             Container(

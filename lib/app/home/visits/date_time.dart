@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
-import '../../globals.dart' as globals;
+import 'package:firma_prototype/globals.dart' as globals;
 
 const double _kPickerSheetHeight = 216.0;
 

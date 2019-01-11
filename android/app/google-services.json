@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "800194295633",
+    "firebase_url": "https://firma-admin-dev.firebaseio.com",
+    "project_id": "firma-admin-dev",
+    "storage_bucket": "firma-admin-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:800194295633:android:e6e3e546d04176b4",
+        "android_client_info": {
+          "package_name": "com.villvay.firmaprototype"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "800194295633-rnacggd05sm0rrendknlrfbvsfj8s2dg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQrZUQuXRGncv59ZuEgkrYP_3lRKB-qwo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

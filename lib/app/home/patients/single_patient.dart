@@ -1,9 +1,9 @@
 import 'package:firma_prototype/app/common/cabin_text_style.dart';
-import 'package:firma_prototype/app/patients/patients_tab.dart';
-import 'package:firma_prototype/app/visits/single_patient_qtn.dart';
+import 'package:firma_prototype/app/home/patients/patients_tab.dart';
+import 'package:firma_prototype/app/home/visits/single_patient_qtn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../../globals.dart' as globals;
+import 'package:firma_prototype/globals.dart' as globals;
 
 class SinglePatient extends StatelessWidget {
   final PatientData data;
